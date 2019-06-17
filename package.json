@@ -1,0 +1,41 @@
+{
+    "name": "ClinicalSoft-backEnd",
+    "version": "0.0.1",
+    "description": "An API built with NodeJS, Express, MongoDB and TypeScript",
+    "main": "dist/server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc",
+        "dev": "ts-node-dev ./src/server.ts",
+        "start": "nodemon ./dist/server.js",
+        "prod": "npm run build && npm run start"
+    },
+    "dependencies": {
+        "@types/bcryptjs": "^2.4.2",
+        "@types/express": "^4.16.1",
+        "@types/jsonwebtoken": "^8.3.2",
+        "@types/mongoose": "^5.3.26",
+        "@types/passport": "^1.0.0",
+        "@types/passport-local": "^1.0.33",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.18.3",
+        "codelyzer": "^5.0.0",
+        "cors": "^2.8.5",
+        "eslint": "^5.13.0",
+        "eslint-plugin-import": "^2.16.0",
+        "express": "^4.16.4",
+        "helmet": "^3.16.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.4.7",
+        "morgan": "^1.9.1",
+        "passport": "^0.4.0",
+        "passport-local": "^1.0.0",
+        "ts-node-dev": "^1.0.0-pre.32"
+    },
+    "devDependencies": {
+        "typescript": "^3.1.6",
+        "@types/node": "^11.13.2",
+        "ts-node": "^8.0.3",
+        "tslint": "^5.11.0"
+    }
+}
