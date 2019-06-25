@@ -7,7 +7,8 @@ const httpsOptions = {
     key: fs.readFileSync('./config/key.pem'),
     cert: fs.readFileSync('./config/cert.pem')
 }
-app.listen(PORT, () => {
+// REVISAR MODIFICASION DEL PUERTO || process.env.PORT
+app.listen(process.env.PORT || PORT, () => {
     console.log('Express server listening on port ' + PORT);
 })
 // https.createServer(httpsOptions, app).listen(PORT, () => {

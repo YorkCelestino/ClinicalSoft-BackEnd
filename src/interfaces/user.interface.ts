@@ -1,21 +1,19 @@
 export interface IUser {
-    name: string;
-    surname: string;
+    fullname: string;
     username: string;
     email: string;
-    emailStatus: boolean;
+    cellPhone: any;
     password: string;
+    saltSecret: string;
+    speciality:string;
+    idCard: any;
     profilePath: string;
-    universityId: string | any;
-    careerId: string | any;
-    studentId: string;
-    settings: any;
     createdAt: Date;
-    lastSeenAt: Date;
     userType: string | any;
+    lastSeenAt: Date;
     passwordResetToken: string;
     passwordResetTokenExpiresAt: number;
     emailProofToken: string;
-    emailProofTokenExpiresAt: string;
-    saltSecret: string;
+    emailProofTokenExpiresAt: string;  
+    // idSpecialities  'FK'
 }

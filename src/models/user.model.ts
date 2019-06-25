@@ -15,11 +15,7 @@ export interface IUserModel extends IUser, Document {
 
 
 export const userSchema = new Schema({
-    name: {
-        type: String,
-        required: 'Full name can\'t be empty'
-    },
-    surname: {
+    fullName: {
         type: String,
         required: 'Full name can\'t be empty'
     },
@@ -31,32 +27,18 @@ export const userSchema = new Schema({
         required: 'Email can\'t be empty',
         unique: true
     },
-    emailStatus : {
-        type: String,
-        default: "toConfirm"
-    },
     password: {
         type: String,
         required: 'Password can\'t be empty',
         minlength: [4, 'Password must be atleast 4 character long']
     },
-    profilePath: {
-        type: String,
-        default: ''
-    },
-    universityId: {
-        type: String
-    },
-    careerId: {
-        type: String
-    },
-    studentId: {
-        type: String
-    },
-    settings: Object,
+    saltSecret: String,
     createdAt: {
         type: Date,
         default: new Date()
+    },
+    userType: {
+        type: String
     },
     lastSeenAt: {
         type: Date,
@@ -78,11 +60,10 @@ export const userSchema = new Schema({
         type: Number,
         default: 0
     },
-    userType: {
-        type: String
-    },
-    saltSecret: String
-});
+    isDelete: {
+        type: Boolean
+    }
+}, { timestamps: true});
 
 // Custom validation for email
 userSchema.path('email').validate((val) => {

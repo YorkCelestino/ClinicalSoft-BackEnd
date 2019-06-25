@@ -6,7 +6,7 @@ import User, { IUserModel } from "../models/user.model";
 export class UserController {
     
     public getUserProfile(req: Request | any, res: Response) {
-
+        
         User.findOne({ _id : req._id}, {
             password: 0,
             passwordResetToken: 0,
