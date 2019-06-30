@@ -5,7 +5,7 @@ import config from '../config/config';
 import * as mongoose from 'mongoose';
  const Schema = mongoose.Schema;
 
- export const appoinment = new Schema({
+ export const appoinmentSchema = new Schema({
      /**
       * recordar colocar los 'FK'
       * idUser
@@ -28,3 +28,11 @@ import * as mongoose from 'mongoose';
         type: Boolean
     }
  },{ timestamps: true })
+
+appoinmentSchema.set('toJSON',{
+    transform: function(doc, ret, options){
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.__v;
+    }
+});

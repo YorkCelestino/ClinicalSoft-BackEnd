@@ -20,12 +20,14 @@ export const userSchema = new Schema({
         required: 'Full name can\'t be empty'
     },
     username: {
-        type: String
+        type: String,
+        required: 'Username can\'t be empty',
+        unique: true
     },
     email: {
         type: String,
         required: 'Email can\'t be empty',
-        unique: true
+        // unique: true
     },
     password: {
         type: String,
@@ -38,26 +40,11 @@ export const userSchema = new Schema({
         default: new Date()
     },
     userType: {
-        type: String
+        type: String,
+        required: 'User Type can\'t be empty',
     },
     lastSeenAt: {
         type: Date,
-        default: 0
-    },
-    passwordResetToken: {
-        type: String,
-        default: ''
-    },
-    passwordResetTokenExpiresAt: {
-        type: Number,
-        default: 0
-    },
-    emailProofToken: {
-        type: String,
-        default: ''
-    },
-    emailProofTokenExpiresAt: {
-        type: Number,
         default: 0
     },
     isDelete: {

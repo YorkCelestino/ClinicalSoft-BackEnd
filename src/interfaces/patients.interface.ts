@@ -15,7 +15,7 @@ export interface  IPatient{
     name: string;
     surname: string;
     email: string;
-    cellPhone: string;
+    cellPhone: number;
     idCard: string;
     civilStatus: string;
     gender: string;
@@ -30,6 +30,5 @@ export interface  IPatient{
     // remember complete this last attributes with following data
     admissionDate: any;// nacio, llego
     egressDate: any// Salio, murio
-    isDelete: any;
-
+    // isDeleted: any;
 }

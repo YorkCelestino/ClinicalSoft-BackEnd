@@ -3,7 +3,9 @@ import { IPatient } from 'interfaces/patients.interface';
 import config from '../config/config';
 
 import * as mongoose from 'mongoose';
+
 const Schema = mongoose.Schema;
+
 export const actData = new Schema ({
     districtMunicipality:{
         type: String
@@ -36,57 +38,95 @@ export const actData = new Schema ({
     }
  })
  
-export const patient = new Schema ({
-   name:{
+export const patientSchema = new Schema ({
+   
+    name:{
        type: String
    },
+
    surname:{
        type: String
    },
-   idCart:{
-       type: String
+
+   email:{
+        type:String
    },
-   civilStatus:{
-    type: String
-   },
-   gender: {
-    type: String
-   },
-   birthdate: {
-    type: Date
-   },
-   actData: {
-       type:actData
-   },
-   scholarship:{
-    type: String
-   },
-   attend: {
-    type: Boolean
-   },
-   work: {
-    type: String
+   
+   cellPhone:{
+        type: Number
    },
 
-   sdss: {
-    type: sdss
+   idCard:{
+        type: String,
+        unique:true
+   },
+
+   civilStatus:{
+        type: String
+   },
+
+   gender: {
+        type: String
+   },
+
+   birthdate: {
+        //type: Date,
+        type: String
+   },
+
+   actData: {
+        type:actData
+   },
+
+   scholarship:{
+        type: String
+   },
+
+   attend: {
+        type: Boolean
+   },
+
+   work:{
+        type: String
+   },
+
+   sdss:{
+        type: sdss
     },
-    socialSecurityNumber:
-    {
+
+    socialSecurityNumber:{
         type: Number
     },
-    riskFactorsDiseases: {
+
+    riskFactorsDiseases:{
         type: String
     },
     // remember complete this last attributes with following data
     admissionDate: {
-        type: Date
+        // type: Date
+        type:String
     },// nacio, llego
     egressDate: {
-        type: Date
+        // type: Date
+        type: String
     },// Salio, murio
-    isDelete: {
-        type: Boolean
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
 
 }, { timestamps: true })
+
+patientSchema.set('toJSON',{
+    transform: function (doc, ret, options) {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.__v;
+    }
+})
+
+const Patient= mongoose.model ('Patient', patientSchema);;
+
+export default Patient;
+
+//export default Patient;

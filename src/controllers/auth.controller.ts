@@ -7,28 +7,6 @@ import passport = require('passport');
 
 export class AuthController {
 
-    public register(req: Request, res: Response, next) {
-        let user: any = new User();
-        Object.assign(user, req.body);
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(user.password, salt, (err, hash) => {
-                user.password = hash;
-                user.saltSecret = salt;
-               return( user.save((err, doc) => {
-                    if (!err)
-                    return res.send(doc);
-                    else {
-                        if (err.code == 11000)
-                        return res.status(422).send(['Duplicate email adrress found.']);
-                        else
-                        return res.send(err);
-                    }
-                    
-                }))
-            });
-        });
-    }
-
     public authenticate(req: Request, res: Response, next: NextFunction)  {
         passport.authenticate('local', (err: Error, user: IUserModel | any, info: IVerifyOptions) => {
             // error from passport middleware

@@ -10,10 +10,7 @@ export interface IUser {
     profilePath: string;
     createdAt: Date;
     userType: string | any;
-    lastSeenAt: Date;
-    passwordResetToken: string;
-    passwordResetTokenExpiresAt: number;
-    emailProofToken: string;
-    emailProofTokenExpiresAt: string;  
+    lastSeenAt: Date; 
+    // isDeleted: any;
     // idSpecialities  'FK'
 }
