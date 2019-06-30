@@ -44,8 +44,9 @@ class PatientController{
     }
 
     // ubdate patient
-   public updatePatient(req: Request | any, res:Response){
-        console.log("actualizar");
+   public async updatePatient(req: Request | any, res:Response){
+      const patient = await Patient.findOneAndUpdate(req.body.idcart,req.body);
+      res.json({mjs:"Updating patient",name:req.body.name});
     }
     
     // // shange status of patient

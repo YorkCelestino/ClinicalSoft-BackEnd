@@ -15,7 +15,7 @@ class UserRoutes {
     private config(): void {
         this.router.get("/users",this.userCtrl.getUsers);
         this.router.post("/add-user",this.userCtrl.addUser);
-        this.router.post("/update-user",checkJwt, this.userCtrl.updateUser);
+        this.router.put("/update-user", this.userCtrl.updateUser);
         this.router.post("/authenticate", this.authCtrl.authenticate);
         this.router.post("/change-password", this.authCtrl.changePassword);
        // this.router.post("/register", this.authCtrl.register);

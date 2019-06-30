@@ -57,6 +57,8 @@ class UserController {
     public async updateUser(req: Request | any, res:Response){
 
         const user = await User.findByIdAndUpdate(req.body._id, req.body, {new: true});
+        console.log(req.body._id);
+        
         res.json({msj:"update User",id:user._id,data:user.username});
     }
 

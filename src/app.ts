@@ -29,7 +29,6 @@ class App {
         this.app.use(passport.initialize());
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
-
         // serving static files 
         /*this.app.use(express.static('public'));
         this.app.use("/api",mainRoutes);
@@ -45,7 +44,8 @@ class App {
         }).then(res =>{
             console.log("MongoDB Connected");
         });
-        mongoose.set('useCreateIndex', true);      
+        mongoose.set('useCreateIndex', true);    //revisar
+        mongoose.set('useFindAndModify', false);  //revisar
     }
 
     private routes():void{
