@@ -6,6 +6,9 @@ import * as mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
+
+export interface IPatientModel extends IPatient, Document {}
+
 export const actData = new Schema ({
     districtMunicipality:{
         type: String
@@ -27,16 +30,16 @@ export const actData = new Schema ({
         type: Number
     }
  
- }, { id: false})
+ }, { _id: false})
 
- export const sdss = new Schema ({
+ export const sdssSchema = new Schema ({
     ars:{
         type: String
     },
     summary:{
         type: String
     }
- })
+ }, { _id: false})
  
 export const patientSchema = new Schema ({
    
@@ -90,9 +93,7 @@ export const patientSchema = new Schema ({
         type: String
    },
 
-   sdss:{
-        type: sdss
-    },
+   sdss: sdssSchema,
 
     socialSecurityNumber:{
         type: Number
@@ -124,9 +125,10 @@ patientSchema.set('toJSON',{
         delete ret.__v;
     }
 })
+export const Patient: Model<IPatientModel> = model<IPatientModel>('Patient', patientSchema);
 
-const Patient= mongoose.model ('Patient', patientSchema);;
+// const Patient= mongoose.model ('Patient', patientSchema);;
 
 export default Patient;
 
-//export default Patient;
+

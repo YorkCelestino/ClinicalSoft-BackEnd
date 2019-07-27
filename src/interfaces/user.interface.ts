@@ -1,16 +1,16 @@
 export interface IUser {
-    fullname: string;
+    fullName: string;
     username: string;
     email: string;
-    cellPhone: any;
     password: string;
     saltSecret: string;
+    cellPhone: any;
     speciality:string;
     idCard: any;
+    userType: string | any;
     profilePath: string;
     createdAt: Date;
-    userType: string | any;
     lastSeenAt: Date; 
-    // isDeleted: any;
+    isActive: boolean;
     // idSpecialities  'FK'
 }

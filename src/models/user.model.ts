@@ -35,20 +35,30 @@ export const userSchema = new Schema({
         minlength: [4, 'Password must be atleast 4 character long']
     },
     saltSecret: String,
-    createdAt: {
-        type: Date,
-        default: new Date()
+    cellPhone:{
+        type:String
     },
-    userType: {
+    speciality:{
+        type: String
+    },
+    idCard:{
+        type: String
+    },
+    role: {
         type: String,
-        required: 'User Type can\'t be empty',
+        ref: 'Role'
     },
     lastSeenAt: {
         type: Date,
         default: 0
     },
-    isDelete: {
-        type: Boolean
+    createdAt: {
+        type: Date,
+        default: new Date()
+    },
+    isActive: {
+        type: Boolean,
+        default: true
     }
 }, { timestamps: true});
 

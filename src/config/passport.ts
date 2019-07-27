@@ -4,8 +4,8 @@ import User, { IUserModel } from '../models/user.model';
 const LocalStrategy = require('passport-local').Strategy;
 
 passport.use(
-    new LocalStrategy({ usernameField: 'email' },
-        (username, password, done: any) => {
+    new LocalStrategy({ usernameField: 'username' },
+        (username: any, password: any, done: any) => {
             User.findOne({$or:[{ email: username }, { username: username }]},
                 (err: Error, user: IUserModel | any) => {
                     if (err){
@@ -13,7 +13,7 @@ passport.use(
                     }
                     // unknown user
                     else if (!user){
-                        return done(null, false, { wrongUser: true, message: 'Email is not registered' });
+                        return done(null, false, { wrongUser: true, message: 'username is not registered' });
                     }
                     // wrong password
                     else if (!user.verifyPassword(password)){
@@ -28,5 +28,6 @@ passport.use(
                 });
         })
 );
+
 
 export default passport;

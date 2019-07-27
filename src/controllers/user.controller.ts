@@ -11,6 +11,9 @@ class UserController {
         User.findOne({ _id : req._id}, {
             password: 0,
             saltSecret: 0
+        }).populate({
+            path: 'role',
+            select: ['name', 'slug']
         }).then((user: IUserModel) => {
            return res.send(user);
         }).catch((err: Error) => {
@@ -18,10 +21,18 @@ class UserController {
         })
     }
 
+   
+
     // getting all users
     public async getUsers(req: Request | any, res:Response){
-       const users= await User.find();
-       res.json(users);
+        await User.find({isActive: true}).populate({
+           path: 'role',
+           select: ['name', 'slug']
+       }).then((user: any) => { 
+           return res.send(user);
+       }).catch((err:Error) => {
+           return res.status(442).send(err);
+       });
     }
 
     // add users
@@ -56,16 +67,22 @@ class UserController {
     // update user
     public async updateUser(req: Request | any, res:Response){
 
-        const user = await User.findByIdAndUpdate(req.body._id, req.body, {new: true});
-        console.log(req.body._id);
-        
-        res.json({msj:"update User",id:user._id,data:user.username});
+        const user = await User.findByIdAndUpdate(req.body.id, req.body, {new: true});
+         
+        res.json({msj:"update User",id:user.id,data:user.username});
     }
 
     // // change status
-    // public async changeStatus(req: Request | any, res:Response){
+     public changeStatus(req: Request | any, res:Response){
         
-    // }
+        User.findByIdAndUpdate(req.body.id, {isActive: req.body.isActive}).then(data => {
+            res.json({msj:"status change", id: req.body.id, newStatus: data.isActive});
+          //  data.save();
+        }).catch(err=> {
+            res.status(422).send({err})
+        })
+
+     }
 }
 
 export default UserController;

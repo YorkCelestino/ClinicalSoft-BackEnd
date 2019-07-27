@@ -19,7 +19,8 @@ class UserRoutes {
         this.router.post("/authenticate", this.authCtrl.authenticate);
         this.router.post("/change-password", this.authCtrl.changePassword);
        // this.router.post("/register", this.authCtrl.register);
-        this.router.get("/get-user-profile", checkJwt, this.userCtrl.getUserProfile);
+        this.router.get("/get-user-profile",checkJwt, this.userCtrl.getUserProfile);
+        this.router.put("/change-status", this.userCtrl.changeStatus);
     }
     
 }

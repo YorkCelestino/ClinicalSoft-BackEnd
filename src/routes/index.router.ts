@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { patientRoutes } from './patients.routes';
 import { userRoutes } from './users.routes';
+import { roleRoutes } from './roles.routes';
+import { checkJwt } from 'middlewares/checkJwt';
 /*
     import { AuthController }  from '../controllers/auth.controller';
     import { UserController } from '../controllers/user.controller';
@@ -22,6 +24,7 @@ class MainRoutes {
     private config(): void {
         this.router.use('/patient', patientRoutes)
         this.router.use('/user', userRoutes)
+        this.router.use('/role', roleRoutes)
         this.router.get('/',(req, res )=>{
             res.status(200).send('<h1>Welcome to ClinicalSoft API</h1>');
         });
