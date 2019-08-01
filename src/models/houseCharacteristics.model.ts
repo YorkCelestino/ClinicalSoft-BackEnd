@@ -1,9 +1,13 @@
 import { Document, Model, model } from 'mongoose';
 import { IHouseCharacteristics } from 'interfaces/houseCharacteristics.Interface';
-import config from '../config/config';
-
 import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+
+export interface IHouseCharacteristicsModel extends IHouseCharacteristics, Document {
+    
+}
+
+
 
 export const HouseCharacteristicsShema = new Schema({
     date:{
@@ -18,10 +22,16 @@ export const HouseCharacteristicsShema = new Schema({
     roofHouse:{
         type: String
     },
+    floorHouse:{
+        type: String
+    },
     sanitaryServise:{
         type: String
     },
-    WaterSupplying:{
+    waterInstallation:{
+        type: String
+    },
+    waterSupplying:{
         type: String
     },
     tashElimination:{
@@ -48,8 +58,9 @@ export const HouseCharacteristicsShema = new Schema({
     qualification:{
         type: String 
     },
-    isDelete:{
-        type: Boolean
+    isActive:{
+        type: Boolean,
+        default: true
     }
 },{ timestamps: true });
 
@@ -61,3 +72,8 @@ HouseCharacteristicsShema.set('toJSON',{
         delete ret.__v;
     }
 })
+
+
+export const HouseCharacteristics: Model<IHouseCharacteristicsModel> = model<IHouseCharacteristicsModel>('HouseCharacteristics', HouseCharacteristicsShema);
+
+export default HouseCharacteristics;

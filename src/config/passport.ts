@@ -12,8 +12,8 @@ passport.use(
                         return done(err);
                     }
                     // unknown user
-                    else if (!user){
-                        return done(null, false, { wrongUser: true, message: 'username is not registered' });
+                    else if (!user || user.isActive === false){
+                        return done(null, false, { wrongUser: true, wrongPassword: false, message: 'username is not registered' });
                     }
                     // wrong password
                     else if (!user.verifyPassword(password)){

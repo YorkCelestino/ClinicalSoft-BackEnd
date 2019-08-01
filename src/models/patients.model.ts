@@ -9,7 +9,7 @@ const Schema = mongoose.Schema;
 
 export interface IPatientModel extends IPatient, Document {}
 
-export const actData = new Schema ({
+/*export const actDataSchema = new Schema ({
     districtMunicipality:{
         type: String
     } ,
@@ -39,7 +39,7 @@ export const actData = new Schema ({
     summary:{
         type: String
     }
- }, { _id: false})
+ }, { _id: false})*/
  
 export const patientSchema = new Schema ({
    
@@ -50,13 +50,21 @@ export const patientSchema = new Schema ({
    surname:{
        type: String
    },
-
+    
+   familyBossId:{
+       type: String,
+       ref: 'Patient'
+   },
    email:{
         type:String
    },
    
    cellPhone:{
         type: Number
+   },
+   
+   address:{
+        type: String
    },
 
    idCard:{
@@ -76,24 +84,57 @@ export const patientSchema = new Schema ({
         //type: Date,
         type: String
    },
-
+///////////////////////////////////////////////////////////
    actData: {
-        type:actData
+        type:String
    },
+   districtMunicipality:{
+    type: String
+    } ,
+    numberOfOfficial:{
+        type: String
+    },
+    bookNumber: {
+        type: Number
+    },
+    
+    folioNumber: {
+         type: Number
+    },
+    actNumber:  {
+        type: Number
+    },
+    yearBook: {
+        type: Number
+    },
+/////////////////////////////////////////////////////////
 
    scholarship:{
         type: String
    },
 
-   attend: {
+   /*attend: {
         type: Boolean
-   },
+   },*/
 
    work:{
         type: String
    },
 
-   sdss: sdssSchema,
+   workType: String,
+
+   whereWork: String, 
+
+   sdss:{
+       type: String
+   },
+  
+   ars:{
+     type: String
+   },
+   regime:{
+      type: String
+   },
 
     socialSecurityNumber:{
         type: Number
@@ -111,7 +152,11 @@ export const patientSchema = new Schema ({
         // type: Date
         type: String
     },// Salio, murio
-    isDeleted: {
+    isActive: {
+        type: Boolean,
+        default: false
+    },
+    isTheBoss: {
         type: Boolean,
         default: false
     }

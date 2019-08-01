@@ -3,8 +3,10 @@ export interface IHouseCharacteristics{
     trendHouse: string ;
     wallsHouse: string;
     roofHouse: string;
+    floorHouse: string;
     sanitaryServise: string;
-    WaterSupplying: string;
+    waterInstallation: string;
+    waterSupplying: string;
     tashElimination: string;
     electricityServise: string;
     bedroonsService: string;
@@ -13,5 +15,5 @@ export interface IHouseCharacteristics{
     hatchery: string; //criaderos
     punctuation: string;
     qualification: string;
-    isDeleted: any;
+    isActive: boolean;
 }
