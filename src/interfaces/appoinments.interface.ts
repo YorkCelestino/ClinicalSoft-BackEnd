@@ -1,9 +1,9 @@
 export interface IAppoinment {
-    //idUser
-    //patientId
-    date: any;
-    description: string;
-    status: string;
+    idUser: string;
+    idPatient: string;
+    date: Date;
+    observations: string;
+    cellPhoneSend: string;
     emailSend: string;
-    isDelete: string;
+    isActive: Boolean;
 }

@@ -19,7 +19,7 @@ export const roleSchema = new Schema({
     description: {
         type:  String
     },
-    isDeleted: {
+    isActive: {
         type: String,
         default: false
     }

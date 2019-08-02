@@ -21,6 +21,7 @@ class UserRoutes {
        // this.router.post("/register", this.authCtrl.register);
         this.router.get("/get-user-profile",checkJwt, this.userCtrl.getUserProfile);
         this.router.put("/change-status", this.userCtrl.changeStatus);
+        this.router.get("/get-doctors",this.userCtrl.getDoctors);
     }
     
 }

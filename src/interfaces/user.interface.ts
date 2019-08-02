@@ -7,10 +7,12 @@ export interface IUser {
     cellPhone: any;
     speciality:string;
     idCard: any;
-    userType: string | any;
-    profilePath: string;
+    role: string | any;
+   // profilePath: string;
     createdAt: Date;
-    lastSeenAt: Date; 
+  //  lastSeenAt: Date; 
     isActive: boolean;
+    hEnd: Date;
+    hStart: Date;
     // idSpecialities  'FK'
 }
