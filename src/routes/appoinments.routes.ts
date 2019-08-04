@@ -13,7 +13,7 @@ class RoleRoutes {
     }
 
     private config(): void {
-        this.router.post("/", this.appoinmetCtrl.addAppoinment);
+        this.router.post("/add", this.appoinmetCtrl.addAppoinment);
         this.router.get("/all", this.appoinmetCtrl.getAppoinments);
         this.router.put("/edit",this.appoinmetCtrl.editAppoinment);
         this.router.put("/change-status",this.appoinmetCtrl.changeStatus);

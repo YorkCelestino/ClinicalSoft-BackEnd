@@ -1,11 +1,11 @@
 import { Document, Model, model } from 'mongoose';
-import { IAppoinment } from '../interfaces/appoinments.interface';
+import { IAppointment } from '../interfaces/appointment.interface';
 import config from '../config/config';
 
 import * as mongoose from 'mongoose';
  const Schema = mongoose.Schema;
  
-export interface IAppoinmentModel extends IAppoinment, Document {   
+export interface IAppointmentModel extends IAppointment, Document {   
 }
 
 
@@ -19,7 +19,7 @@ export interface IAppoinmentModel extends IAppoinment, Document {
         type: String,
         ref : 'Patient'
     }, 
-    date: {
+    appointmentDate: {
         type: Date
     },
     observations: {
@@ -57,6 +57,6 @@ appoinmentSchema.set('toJSON',{
     }
 })
 
-export const Appoinment: Model<IAppoinmentModel> = model<IAppoinmentModel>('Appoinment', appoinmentSchema );
+export const Appointment: Model<IAppointmentModel> = model<IAppointmentModel>('Appointment', appoinmentSchema );
 
-export default Appoinment;
+export default Appointment;

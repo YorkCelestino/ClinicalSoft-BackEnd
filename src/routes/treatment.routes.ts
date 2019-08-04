@@ -13,7 +13,7 @@ class RoleRoutes {
     }
 
     private config(): void {
-        this.router.post("/", this.treatmentCtrl.addTreatment);
+        this.router.post("/add", this.treatmentCtrl.addTreatment);
         this.router.get("/all", this.treatmentCtrl.getTreatments);
         this.router.put("/edit",this.treatmentCtrl.editTreatment);
         this.router.put("/change-status",this.treatmentCtrl.changeStatus);
