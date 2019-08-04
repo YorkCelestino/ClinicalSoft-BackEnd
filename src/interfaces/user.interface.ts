@@ -12,7 +12,5 @@ export interface IUser {
     createdAt: Date;
   //  lastSeenAt: Date; 
     isActive: boolean;
-    hEnd: Date;
-    hStart: Date;
     // idSpecialities  'FK'
 }

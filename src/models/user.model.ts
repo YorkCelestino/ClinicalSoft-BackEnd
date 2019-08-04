@@ -59,12 +59,6 @@ export const userSchema = new Schema({
     isActive: {
         type: Boolean,
         default: true
-    },
-    hEnd: {
-        type: Date
-    },
-    hStart: {
-        type: Date
     }
 }, { timestamps: true});
 

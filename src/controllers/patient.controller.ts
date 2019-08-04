@@ -16,9 +16,14 @@ class PatientController{
     }
 
     //get all patients
-    public async getPatients(req: Request | any, res:Response):Promise<void>{
-        const patient = await Patient.find();
-        res.json(patient);
+    public  getPatients(req: Request | any, res:Response) {
+        Patient.find({isActive: true})
+        .then((patient: any) => { 
+            return res.send(patient);
+        }).catch((err:Error) => {
+            return res.status(442).send(err);
+        });;
+       // res.json(patient);
     }
 
     // add patient
@@ -33,7 +38,7 @@ class PatientController{
             else {
                 if (err.code == 11000){
                   //  res.json({err});
-                    return res.status(422).send(['Duplicate id cart found.']);
+                    return res.status(422).send(['Duplicate idCard found.']);
                 }
                 else{
                     return res.send(err);
@@ -44,16 +49,31 @@ class PatientController{
         })
     }
 
-    // ubdate patient
+    // update patient
    public async updatePatient(req: Request | any, res:Response):Promise<void>{
      // const patient = 
-      await Patient.findOneAndUpdate(req.body.idcart,req.body);
-      res.json({mjs:"Updating patient",name:req.body.name});
+     let patient = new Patient();
+      await Patient.findOneAndUpdate(req.body.id, req.body, {new: true})
+      .then((doc)=>{
+        return res.send(doc)
+    }).catch((err)=>{
+        return res.status(403).send(err)
+    });
+     // res.json({mjs:"Updating patient",name:req.body.name});
+
     }
     
-    // // shange status of patient
-    // shangeStatusPatients(req: Request | any , res:Response){
-    //     console.log("cambiar estado");
-    // }
+      // // change status
+      public changeStatus(req: Request | any, res:Response){
+        
+        Patient.findByIdAndUpdate(req.body.id, {isActive: req.body.isActive}).then(data => {
+            res.json({msj:"status change", id: req.body.id, newStatus: data.isActive});
+          //  data.save();
+        }).catch(err=> {
+            res.status(422).send({err})
+        })
+
+     }
+  
 }
 export default PatientController;

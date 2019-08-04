@@ -86,7 +86,7 @@ export const patientSchema = new Schema ({
    },
 ///////////////////////////////////////////////////////////
    actData: {
-        type:String
+        type: Boolean
    },
    districtMunicipality:{
     type: String
@@ -118,7 +118,7 @@ export const patientSchema = new Schema ({
    },*/
 
    work:{
-        type: String
+        type: Boolean
    },
 
    workType: String,
@@ -126,7 +126,7 @@ export const patientSchema = new Schema ({
    whereWork: String, 
 
    sdss:{
-       type: String
+       type: Boolean,
    },
   
    ars:{

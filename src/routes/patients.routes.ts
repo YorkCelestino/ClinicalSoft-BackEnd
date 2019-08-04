@@ -12,13 +12,15 @@ class PatientRoutes {
     }
     config():void{
         // getting patient
-        this.router.get('/',this.patientController.getPatient);
+        this.router.get('/one',this.patientController.getPatient);
         // getting all patients
-        this.router.get('/patients',this.patientController.getPatients);
+        this.router.get('/all',this.patientController.getPatients);
         // add patients
-        this.router.post('/add-patient',this.patientController.addPatient);
+        this.router.post('/add',this.patientController.addPatient);
         // update patients
-        this.router.put('/update-patient',this.patientController.updatePatient);
+        this.router.put('/update',this.patientController.updatePatient);
+        // /change status
+        this.router.put('/change-status', this.patientController.changeStatus);
     }
 
 }

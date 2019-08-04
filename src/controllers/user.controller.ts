@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import { Error } from 'mongoose';
 import User, { IUserModel } from "../models/user.model";
 import bcrypt = require('bcryptjs');
-import { userInfo } from "os";
 import { IUser } from '../interfaces/user.interface';
 
 
@@ -37,38 +36,18 @@ class UserController {
        });
     }
 
+    // getting only the doctors
     getDoctors(req: Request| any, res: Response,done: any) {
 
-        let horahoraActual = new Date();
-    
-       // var fecha2 = new Date('1/1/1990 06:12');
-       // var fecha1 = new Date('1/1/1990 05:12');
-
-         
-       // if(fecha2 <= fecha1) {
-         //   console.log(horaActual);
-            
-           // return [false,'Hora final debe ser mayor a hora inicial']; 
-       // }
-        // else {
-         //    console.log(horaActual);
-             
-            // return [true,'']; 
-          //  }
-
-            User.find({ role: "5d3665b1d964920f1c00659e" },)
-                .then((user : any) => {
+        User.find({ role: "5d3665b1d964920f1c00659e" })
+            .then((user : any) => {
                 
-                    return res.send(user);
+                return res.send(user);
                 
-                }
-                    
-                ).catch((err:Error) => {
-                    return res.status(442).send(err);
-                });
-
-    
-}
+            }).catch((err:Error) => {
+                return res.status(442).send(err);
+            });    
+    }
 
     // add users
     public addUser(req: Request, res: Response, next) {
