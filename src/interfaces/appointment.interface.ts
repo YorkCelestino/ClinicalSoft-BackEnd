@@ -1,7 +1,7 @@
 export interface IAppointment {
     idUser: string;
     idPatient: string;
-    appointmentDate: Date;
+    appointmentDate: string;
     observations: string;
     cellPhoneSend: string;
     emailSend: string;

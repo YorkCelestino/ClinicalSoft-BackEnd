@@ -20,7 +20,7 @@ export interface IAppointmentModel extends IAppointment, Document {
         ref : 'Patient'
     }, 
     appointmentDate: {
-        type: Date
+        type: String
     },
     observations: {
         type: String
@@ -34,7 +34,7 @@ export interface IAppointmentModel extends IAppointment, Document {
     emailSend:{
         type: Boolean
     },
-    Activise: {
+    isActive: {
         type: Boolean,
         default: true
     }

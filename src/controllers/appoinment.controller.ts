@@ -6,7 +6,7 @@ import Appointment, {IAppointmentModel} from '../models/appoinments.model';
 class AppoinmentController{
 
     public async getAppoinments(req: Request, res: Response){
-        await Appointment.find().populate({
+        await Appointment.find({isActive : true }).populate({
             path: 'idPatient',
             select: ['name']
         }).populate({
@@ -18,6 +18,38 @@ class AppoinmentController{
             return res.status(403).send(err)
         })
     }
+
+    public async getTodayAppoinments(req: Request, res: Response){
+
+      const actualDate: Date = new Date();
+      let day = actualDate.getDate();
+      let Month = actualDate.getMonth()  + 1;
+
+      let newdate : string = (day + '/' + Month + '/' + actualDate.getFullYear());
+      
+    console.log(newdate);
+    
+  //  console.log(todayDate.getFullYear());
+      await Appointment.find({appointmentDate: newdate} ).then((doc)=>{
+          
+        return res.send(doc)
+
+      }).catch((err)=>{
+        return res.status(403).send(err)
+      })
+
+        // await Appointment.find({appointmentDate : todayDate}).populate({
+        //     path: 'idPatient',
+        //     select: ['name']
+        // }).populate({
+        //     path: 'idUser',
+        //     select: ['fullName']
+        // }).then((doc)=>{
+        //     return res.send(doc)
+        // }).catch((err)=>{
+        //     return res.status(403).send(err)
+        // })
+    } 
 
     public async addAppoinment(req: Request, res: Response){
         let newAppoinment = new Appointment(req.body);

@@ -17,6 +17,7 @@ class RoleRoutes {
         this.router.get("/all", this.appoinmetCtrl.getAppoinments);
         this.router.put("/edit",this.appoinmetCtrl.editAppoinment);
         this.router.put("/change-status",this.appoinmetCtrl.changeStatus);
+        this.router.get("/today-date", this.appoinmetCtrl.getTodayAppoinments);
     }
     
 }

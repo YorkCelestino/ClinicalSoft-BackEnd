@@ -30,7 +30,7 @@ class MainRoutes {
         this.router.use('/user'/*,checkJwt*/, userRoutes)
         this.router.use('/role'/*,checkJwt*/, roleRoutes)
         this.router.use('/houseCharacteristics', houseCharacteristicsRoutes )
-        this.router.use('/appoinment', appoinmentRoutes)
+        this.router.use('/appointment', appoinmentRoutes)
         this.router.use('/treatment', TreatmentRoutes)
         this.router.get('/',(req, res )=>{
             res.status(200).send('<h1>Welcome to ClinicalSoft API</h1>');
