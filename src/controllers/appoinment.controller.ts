@@ -30,7 +30,13 @@ class AppoinmentController{
     console.log(newdate);
     
   //  console.log(todayDate.getFullYear());
-      await Appointment.find({appointmentDate: newdate} ).then((doc)=>{
+      await Appointment.find({appointmentDate: newdate} ).populate({
+        path: 'idPatient',
+        select: ['name']
+    }).populate({
+        path: 'idUser',
+        select: ['fullName']
+    }).then((doc)=>{
           
         return res.send(doc)
 

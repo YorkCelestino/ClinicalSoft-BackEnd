@@ -39,7 +39,7 @@ class UserController {
     // getting only the doctors
     getDoctors(req: Request| any, res: Response,done: any) {
 
-        User.find({ role: "5d3665b1d964920f1c00659e" })
+        User.find({ role: "5d46cb2fd0bd702f34872ea9" })
             .then((user : any) => {
                 
                 return res.send(user);
