@@ -11,6 +11,6 @@ export interface IUser {
    // profilePath: string;
     createdAt: Date;
   //  lastSeenAt: Date; 
-    isActive: boolean;
+  isActive: boolean;
     // idSpecialities  'FK'
 }

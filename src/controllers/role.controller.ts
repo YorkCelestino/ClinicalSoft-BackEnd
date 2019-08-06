@@ -23,6 +23,19 @@ class RolesController{
         })
     }
 
+        // getting user porfile
+    public getRole(req: Request | any, res: Response) {
+        
+            Role.findOne({ id: req.role}, {
+                password: 0,
+                saltSecret: 0
+            }).then((role: IRoleModel) => {
+               return res.send(role);
+            }).catch((err: Error) => {
+               return res.status(442).send(err);
+            })
+        }
+
     
 }
 export default  RolesController;

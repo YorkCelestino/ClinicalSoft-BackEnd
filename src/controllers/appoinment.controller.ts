@@ -27,7 +27,7 @@ class AppoinmentController{
 
       let newdate : string = (day + '/' + Month + '/' + actualDate.getFullYear());
       
-    console.log(newdate);
+   // console.log(newdate);
     
   //  console.log(todayDate.getFullYear());
       await Appointment.find({appointmentDate: newdate} ).populate({

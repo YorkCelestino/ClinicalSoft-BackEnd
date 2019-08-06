@@ -14,6 +14,7 @@ class RoleRoutes {
     private config(): void {
         this.router.post("/",this.roleCtrl.addRole);
         this.router.get("/all",this.roleCtrl.getRoles);
+        this.router.get('/one',this.roleCtrl.getRole)
     }
     
 }
