@@ -12,17 +12,26 @@ class UserController {
         User.findOne({ _id : req._id}, {
             password: 0,
             saltSecret: 0
-        }).populate({
-            path: 'role',
-            select: ['name', 'slug']
         }).then((user: IUserModel) => {
            return res.send(user);
         }).catch((err: Error) => {
            return res.status(442).send(err);
         })
+
+
     }
 
-   
+    // getting all users
+    public async getUser(req: Request | any, res:Response){
+        await  User.findOne({ _id : req._id}).populate({
+           path: 'role',
+           select: ['name', 'slug']
+       }).then((user: any) => { 
+           return res.send(user);
+       }).catch((err:Error) => {
+           return res.status(442).send(err);
+       });
+    }
 
     // getting all users
     public async getUsers(req: Request | any, res:Response){
