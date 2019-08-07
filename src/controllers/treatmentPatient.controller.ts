@@ -5,8 +5,11 @@ import TreatmentPatient,{ITreatmentPatientModel} from '../models/treatmentPatien
 
 class TreatmentPatientController{
 
+    // getting treatment of specific patient
     public async getTreatmentsPatient(req: Request | any, res: Response){
-        await TreatmentPatient.find({$or:[{ isActive: true }, { idPatient: req.idPatient}]},).populate({
+   
+        await TreatmentPatient.findById({idPatient: req.body.idPatient}).populate({
+        
             path: 'idPatient',
             select: 'name'
         }).populate({

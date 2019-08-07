@@ -3,6 +3,8 @@ import { Error } from 'mongoose';
 import { promises } from "fs";
 import Appointment, {IAppointmentModel} from '../models/appoinments.model';
 
+import { nodemailer } from 'nodemailer';
+
 class AppoinmentController{
 
     public async getAppoinments(req: Request, res: Response){
@@ -30,14 +32,14 @@ class AppoinmentController{
    // console.log(newdate);
     
   //  console.log(todayDate.getFullYear());
-      await Appointment.find({appointmentDate: newdate} ).populate({
+      await Appointment.find({appointmentDate: newdate, isActive: true}).populate({
         path: 'idPatient',
         select: ['name']
     }).populate({
         path: 'idUser',
         select: ['fullName']
-    }).then((doc)=>{
-          
+    }).then(async (doc)=>{
+       //  let testAccount = await nodemailer.createTestAccount();
         return res.send(doc)
 
       }).catch((err)=>{
