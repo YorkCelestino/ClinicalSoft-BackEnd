@@ -68,6 +68,7 @@ class UserController {
                 user.saltSecret = salt;
                 return( user.save((err, doc) => {
                     if (!err){
+                        console.log('entra');
                         
                         return res.send(doc);
                     } 

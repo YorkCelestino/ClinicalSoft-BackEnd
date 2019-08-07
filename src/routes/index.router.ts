@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { patientRoutes } from './patients.routes';
 import { userRoutes } from './users.routes';
 import { TreatmentRoutes } from './treatment.routes';
+import { TreatmentPatientRoutes } from './treatment.Patient.routes';
 import { appoinmentRoutes } from './appoinments.routes';
 import { roleRoutes } from './roles.routes';
 import {checkJwt} from '../middlewares/checkJwt';
@@ -32,6 +33,7 @@ class MainRoutes {
         this.router.use('/houseCharacteristics', houseCharacteristicsRoutes )
         this.router.use('/appointment', appoinmentRoutes)
         this.router.use('/treatment', TreatmentRoutes)
+        this.router.use('/treatmentPatient', TreatmentPatientRoutes)
         this.router.get('/',(req, res )=>{
             res.status(200).send('<h1>Welcome to ClinicalSoft API</h1>');
         });
